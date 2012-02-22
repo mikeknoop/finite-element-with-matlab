@@ -17,6 +17,8 @@ function myfea(filename)
 global ielem iprops eprops elname iforce force idisp disp
 global Kff Kfe Kee Uf Ue Ff Fe
 global x
+global utot ptot
+global D
 %
 % assign input filename
 filename = [filename '.txt']
@@ -80,4 +82,3 @@ for i = 1:D.nnode*D.ndof;
     end
 end
 fea_output(utot,ptot);
-

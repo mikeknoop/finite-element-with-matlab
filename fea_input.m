@@ -25,8 +25,9 @@ D.etype = fscanf(fid,'%d',1);   % element type (only one per model)
 switch D.etype
 case 1
     % 2 node 1D spring element
-    D.ndof = 1; D.nenode = 2; D.neprops = 1; D.elname = 'spring1d'; 
+    D.ndof = 1; D.nenode = 2; D.neprops = 1; D.elname = 'spring1d';
 case 2
+    D.ndof = 2; D.nenode = 2; D.neprops = 2; D.elname = 'truss2d'; 
 case 3
 end
 %
