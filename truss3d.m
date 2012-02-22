@@ -33,7 +33,7 @@ L = sqrt((x2-x1)^2+(y2-y1)^2+(z2-z1)^2); % el length
 l = (x2-x1)/L;
 m = (y2-y1)/L;
 n = (z2-z1)/L;
-te = [l m n 0 0 0; 0 00 l m n];
+te = [l m n 0 0 0; 0 0 0 l m n];
 %
 % evaluate element matrices
 switch icode
