@@ -18,7 +18,7 @@ global ielem iprops eprops elname iforce force idisp disp
 global Kff Kfe Kee Uf Ue Ff Fe
 global x
 global utot ptot
-global D
+global D ieqn
 %
 % assign input filename
 filename = [filename '.txt']

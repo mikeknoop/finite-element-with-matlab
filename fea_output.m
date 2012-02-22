@@ -6,9 +6,8 @@ function fea_output(utot,ptot)
 % establish variables for outputs to work with
 % define global arrays
 global ielem iprops eprops elname iforce force idisp disp
-global Kff Kfe Kee Uf Ue Ff Fe
 global x
-global D
+global D ieqn
 %
 nnode = D.nnode;    % no. of nodes in model
 nel = D.nel;        % no. of elements in model
@@ -18,9 +17,6 @@ etype = D.etype;    % element type (only one per model)
 ndof = D.ndof;      % no. of dofs at each node
 nenode = D.nenode;  % no. of nodes per element
 elname = D.elname;  % name of element Mfile
-%
-% initialize equation numbers for dofs
-ieqn = initialize(D);
 
 %
 % calculate stresses
@@ -34,7 +30,6 @@ end
 
 %
 % plot 2D or 3D undeformed and deformed truss elements to screen
-sf = 1e7; % factor to scale deformations by
 xy = x;
 A = zeros(nnode,nnode);
 for i = 1:nel;
@@ -46,13 +41,16 @@ gplot3(A,xy) % plot undeformed
 axis([min(xy(:,1))-2 max(xy(:,1))+2 min(xy(:,2))-2 max(xy(:,2))+2]) % zoom out
 hold on;
 % add on deformations
+mx = max(max(xy));
+mxd = mx+max(max((utot)));
+sf = round((1/abs(mx-mxd))/5); % factor to scale deformations by
 for i = 1:nnode;
     xy(i,1) = xy(i,1)+sf*(utot((2*i)-1));
     xy(i,2) = xy(i,2)+sf*(utot((2*i)));
 end;
-gplot3(A,xy,'red') % plot deformed
+gplot3(A,xy,'red--') % plot deformed
 axis([min(xy(:,1))-2 max(xy(:,1))+2 min(xy(:,2))-2 max(xy(:,2))+2]) % zoom out
-legend('undeformed', ['deformed (scaled ' num2str(sf,'%G') ')'])
+legend('undeformed', ['deformed (scaled ' num2str(sf,'%G') 'x)'])
 hold off;
 
 %

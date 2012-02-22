@@ -29,6 +29,7 @@ case 1
 case 2
     D.ndof = 2; D.nenode = 2; D.neprops = 2; D.elname = 'truss2d'; 
 case 3
+    D.ndof = 3; D.nenode = 2; D.neprops = 2; D.elname = 'truss3d'; 
 end
 %
 % read nodal data
