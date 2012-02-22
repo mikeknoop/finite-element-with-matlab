@@ -33,11 +33,10 @@ for i = 1:nel;
 end
 
 %
-% plot 2D undeformed and deformed elements to screen
+% plot 2D or 3D undeformed and deformed truss elements to screen
 sf = 1e7; % factor to scale deformations by
 xy = x;
-xy(:,3) = []; % delete z data column
-A = zeros(nnode,nnode)
+A = zeros(nnode,nnode);
 for i = 1:nel;
     m = ielem(i,1);
     n = ielem(i,2);

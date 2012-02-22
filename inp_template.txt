@@ -1,0 +1,11 @@
+nnode nel nloads ndisps eltype
+
+node# x y z
+
+el# elprop node1 node2
+
+loadedel# dir magnitude
+
+displacedel# dir magnitude
+
+elprop# prop1 prop2 ...
