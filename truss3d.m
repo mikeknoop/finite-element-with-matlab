@@ -39,7 +39,12 @@ te = [l m n 0 0 0; 0 0 0 l m n];
 switch icode
 case 1
     % compute element load vector (if the element has some internal load)
-    eldat = [0;0;0;0;0;0;];
+    %eldat = [0;0;0;0;0;0;];
+    % calculate element stresses due to thermal effects
+    % eprop(3) is thermal coeff of element
+    % eprop(4) is temperate change in element
+    therm = ((eprop(1)*eprop(2)*eprop(3)*eprop(4))/L)*([-l -m -n l m n]');
+    eldat = therm;
 case 2
     % compute element stiffness matrix
     % 2d truss has 2dof, so eldat should be a 4x4

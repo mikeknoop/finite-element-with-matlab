@@ -30,6 +30,7 @@ end
 
 %
 % plot 2D or 3D undeformed and deformed truss elements to screen
+deg = D.ndof; % deg needs to match the number coordinates (2 for 2D, 3 for 3D)
 xy = x;
 A = zeros(nnode,nnode);
 for i = 1:nel;
@@ -43,10 +44,11 @@ hold on;
 % add on deformations
 mx = max(max(xy));
 mxd = mx+max(max((utot)));
-sf = round((1/abs(mx-mxd))/15); % factor to scale deformations by
+%sf = round((1/abs(mx-mxd))/15); % factor to scale deformations by
+sf = round(abs(0.15/((1-(mx/mxd)))));
 for i = 1:nnode;
-    xy(i,1) = xy(i,1)+sf*(utot((2*i)-1));
-    xy(i,2) = xy(i,2)+sf*(utot((2*i)));
+    xy(i,1) = xy(i,1)+sf*(utot((deg*i)-1));
+    xy(i,2) = xy(i,2)+sf*(utot((deg*i)));
 end;
 gplot3(A,xy,'red--') % plot deformed
 axis([min(xy(:,1))-2 max(xy(:,1))+2 min(xy(:,2))-3 max(xy(:,2))+3]) % zoom out

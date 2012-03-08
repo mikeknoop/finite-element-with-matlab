@@ -26,10 +26,13 @@ switch D.etype
 case 1
     % 2 node 1D spring element
     D.ndof = 1; D.nenode = 2; D.neprops = 1; D.elname = 'spring1d';
+    % neprops = [k]
 case 2
-    D.ndof = 2; D.nenode = 2; D.neprops = 2; D.elname = 'truss2d'; 
+    D.ndof = 2; D.nenode = 2; D.neprops = 4; D.elname = 'truss2d';
+    % neprops = [A E thermal_coeff temperature_change]
 case 3
-    D.ndof = 3; D.nenode = 2; D.neprops = 2; D.elname = 'truss3d'; 
+    D.ndof = 3; D.nenode = 2; D.neprops = 4; D.elname = 'truss3d';
+    % neprops = [A E thermal_coeff temperature_change]
 end
 %
 % read nodal data
